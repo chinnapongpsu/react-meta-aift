@@ -25,25 +25,25 @@ export const api = {
     const response = await client.get(url, { responseType: "blob" });
     return response;
   },
-  getPathuma: async (requests: ISPathumma) => {
+  postPathumma: async (requests: ISPathumma) => {
     const formData = new FormData();
     
-    formData.append("context", requests.context);
+    formData.append("context", "Hello");
     formData.append("prompt", requests.prompt);
-    formData.append("sessionid", requests.sessionid);
+    formData.append("sessionid", "1234");
     formData.append("temperature", requests.temperature.toString());
 
     setConfig({
       headers: {
         Apikey: `${process.env.REACT_APP_API_KEY}`,
         "X-lib": 'ai4thai-lib',
-        accept: 'application/json'
       },
 
     });
-      const response = await client.post(`${process.env.REACT_APP_PATHUMMA_URL}`, formData);
-      return response;
-  }
+      const response = await client.post(`https://api.aiforthai.in.th/pathumma-chat`, formData);
+      console.log(response);
+      return response
+  },
   getBlendShapes: async (url: string) => {
     setConfig({
       headers: {

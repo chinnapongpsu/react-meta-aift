@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import api from "../api/api";
 import   "../../public/context.txt";
+import { ISPathumma } from "../interfaces/api";
 const PathummaComponent = () => {
   const [prompt, setPrompt] = useState("");
-  const [contextData, setContextData] = useState(""); // สถานะสำหรับ context
+  const [contextData, setContextData] = useState("");
   const [response, setResponse] = useState(null);
-  const sessionid = uuidv4(); // สร้าง sessionid
+  const sessionid = uuidv4();
 
 
   useEffect(() => {
@@ -25,18 +26,17 @@ const PathummaComponent = () => {
   
   const handleSubmit = async () => {
     try {
-      const requests = {
+      const requests : ISPathumma = {
         context: contextData,
         prompt: prompt,
         sessionid: sessionid,
         temperature: 0.4,
       };
       
-      const res = await api.getPathuma(requests);
+      const res = await api.postPathumma(requests);
       console.log(res)
     } catch (error) {
       console.error("Error calling Pathumma API:", error);
-      
     }
   };
 

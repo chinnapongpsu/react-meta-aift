@@ -20,6 +20,8 @@ client.interceptors.request.use(
     if (configHeaders && request.headers) {
       request.headers["Content-Type"] = configHeaders["Content-Type"];
       request.headers["Apikey"] = configHeaders["Apikey"];
+      request.headers["X-lib"] = configHeaders["X-lib"];
+      request.headers["accept"] = configHeaders["accept"];
     }
     return request;
   },
