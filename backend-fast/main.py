@@ -3,7 +3,7 @@ import json
 
 from typing import Union
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi import FastAPI, Form, File, UploadFile
+from fastapi import Body, FastAPI, Form, File, UploadFile
 
 app = FastAPI()
 
@@ -17,8 +17,8 @@ app.add_middleware(
 
 
 @app.post("/chat")
-async def chat(prompt: str = Form(...),
-               sessionid: str= Form(...)):
+async def chat(prompt: str = Body(...),
+               sessionid: str= Body(...)):
     context_file_path = 'context_text.txt'
 
     try:
@@ -33,7 +33,7 @@ async def chat(prompt: str = Form(...),
         'prompt': prompt,
         'sessionid': sessionid, 
         'context': context_text,
-        'temperature':0.7
+        'temperature':0.4
     }
 
     headers = {
@@ -42,7 +42,6 @@ async def chat(prompt: str = Form(...),
     }
 
     response = requests.post(url, headers=headers, data=payload)
-    print(response.json)
     response_json = json.loads(response.text)
     return {"response":response_json['response']}
 
