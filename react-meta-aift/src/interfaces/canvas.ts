@@ -9,4 +9,7 @@ export interface ICanvas {
 
   startAnimation: () => void;
   stopAnimation: () => void;
+
+  selectedId: number;
+  setSelectedId: React.Dispatch<React.SetStateAction<number>>;
 }

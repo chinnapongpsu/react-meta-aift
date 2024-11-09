@@ -32,11 +32,11 @@ const Experience = () => {
       <Stage environment="sunset" castShadow />
 
       {/* <group position={[0, -8.4, 4]}> */}
-      <group position={[0, -4, 8.8]}>
+      <group position={[0, -3.6, 8.8]}>
         <Model
-          model={"assets/Nong6.glb"}
+          model={"assets/Nong7.glb"}
           animate={["Idle", "HeadTalk"]}
-          scale={6}
+          scale={5.6}
           arkitFrames={arkitFrames}
         />
       </group>
