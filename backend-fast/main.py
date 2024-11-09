@@ -2,9 +2,19 @@ import requests
 import json
 
 from typing import Union
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, Form, File, UploadFile
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 @app.post("/chat")
 async def chat(prompt: str = Form(...),
