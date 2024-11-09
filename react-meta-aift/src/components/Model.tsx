@@ -15,7 +15,7 @@ const Model: React.FC<ModelProps> = ({
   const { scene, nodes, animations } = useGLTF(model);
 
   return (
-    <mesh geometry={nodes.face}>
+    <mesh>
       <primitive object={scene} {...props} />
     </mesh>
   );
