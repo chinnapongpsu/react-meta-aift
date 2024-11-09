@@ -1,16 +1,20 @@
 import React from "react";
-import { Box, TextField, Button } from "@mui/material";
+import { Box, TextField } from "@mui/material";
+import { Send } from "@mui/icons-material";
 
 import { useCanvas } from "../contexts/CanvasContext";
 import api from "../api/api";
 import { ISendText } from "../interfaces/api";
+import { IOptions } from "../interfaces/controller";
 import { playAudioWithResampling } from "../utils/audio";
+import Controller from "./Controller";
 
 const Interface: React.FC = () => {
   const { setBlendShapes, startAnimation } = useCanvas();
+
   const [text, setText] = React.useState<string>("");
 
-  const handleSpeak = () => {
+  const handleSend = () => {
     if (text.trim() === "") return alert("Please enter some text");
 
     const requests: ISendText = {
@@ -49,32 +53,43 @@ const Interface: React.FC = () => {
       });
   };
 
+  const options: IOptions[] = [
+    {
+      id: 0,
+      children: "Say hi!",
+    },
+    {
+      id: 1,
+      startIcon: <Send />,
+      onClick: handleSend,
+      children: "Send",
+    },
+  ];
+
   return (
     <Box
       sx={{
         position: "absolute",
         bottom: "20px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        width: "70%",
+        left: "10%",
+        width: "80%",
         display: "flex",
         alignItems: "center",
-        gap: "8px",
+        justifyContent: "space-evenly",
+        gap: 2,
         backgroundColor: "white",
-        padding: "8px",
-        borderRadius: "10px",
+        padding: 1.6,
+        borderRadius: 4,
       }}
     >
       <TextField
-        fullWidth
+        style={{ width: "80%" }}
         variant="outlined"
-        label="Enter text"
+        label="Enter message"
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <Button variant="contained" onClick={handleSpeak}>
-        Speak
-      </Button>
+      <Controller options={options} />
     </Box>
   );
 };
