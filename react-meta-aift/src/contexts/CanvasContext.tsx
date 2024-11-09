@@ -10,6 +10,7 @@ export const CanvasProvider: React.FC<{ children: React.ReactNode }> = ({
   const [blendShapes, setBlendShapes] = React.useState<string>("");
   const [curFrame, setCurFrame] = React.useState<number>(0);
   const [isAnimating, setIsAnimating] = React.useState<boolean>(false);
+  const [selectedId, setSelectedId] = React.useState<number>(0);
 
   // Function to start the animation
   const startAnimation = () => {
@@ -33,6 +34,9 @@ export const CanvasProvider: React.FC<{ children: React.ReactNode }> = ({
 
     startAnimation,
     stopAnimation,
+
+    selectedId,
+    setSelectedId,
   };
 
   return (
