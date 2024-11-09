@@ -44,3 +44,47 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+```
+react-meta-aift
+├─ .eslintrc.json
+├─ .gitignore
+├─ .prettierrc.json
+├─ README.md
+├─ package-lock.json
+├─ package.json
+├─ public
+│  ├─ assets
+│  │  ├─ Nong2.glb
+│  │  ├─ Nong3.glb
+│  │  ├─ Nong6.glb
+│  │  └─ model.glb
+│  └─ index.html
+├─ src
+│  ├─ App.tsx
+│  ├─ api
+│  │  ├─ api.ts
+│  │  └─ client.ts
+│  ├─ components
+│  │  ├─ Example.tsx
+│  │  ├─ Experience.tsx
+│  │  ├─ Interface.tsx
+│  │  ├─ Model.tsx
+│  │  └─ Viewer.tsx
+│  ├─ contexts
+│  │  └─ CanvasContext.tsx
+│  ├─ hooks
+│  │  └─ init.tsx
+│  ├─ index.css
+│  ├─ index.tsx
+│  ├─ interfaces
+│  │  ├─ api.ts
+│  │  ├─ canvas.ts
+│  │  └─ client.ts
+│  ├─ react-app-env.d.ts
+│  ├─ reportWebVitals.ts
+│  └─ utils
+│     └─ audio.ts
+└─ tsconfig.json
+
+```

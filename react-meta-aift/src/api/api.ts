@@ -41,8 +41,17 @@ export const api = {
       },
 
     });
+      const response = await client.post(`${process.env.REACT_APP_PATHUMMA_URL}`, formData);
+      return response;
+  }
+  getBlendShapes: async (url: string) => {
+    setConfig({
+      headers: {
+        Apikey: `${process.env.REACT_APP_API_KEY}`,
+      },
+    });
 
-    const response = await client.post(`${process.env.REACT_APP_PATHUMMA_URL}`, formData);
+    const response = await client.get(url);
     return response;
   },
 };
