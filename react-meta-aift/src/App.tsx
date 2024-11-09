@@ -6,7 +6,7 @@ import Viewer from "./components/Viewer";
 import Interface from "./components/Interface";
 
 const App: React.FC = () => (
-  <Box sx={{ width: "100vw", height: "100vh", position: "relative" }}>
+  <Box sx={{ width: "100vw", height: "100vh" }}>
     <CanvasProvider>
       <Viewer />
       <Interface />
