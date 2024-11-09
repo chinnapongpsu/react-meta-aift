@@ -25,6 +25,16 @@ export const api = {
     const response = await client.get(url, { responseType: "blob" });
     return response;
   },
+  getBlendShapes: async (url: string) => {
+    setConfig({
+      headers: {
+        Apikey: `${process.env.REACT_APP_API_KEY}`,
+      },
+    });
+
+    const response = await client.get(url);
+    return response;
+  },
 };
 
 export default api;
