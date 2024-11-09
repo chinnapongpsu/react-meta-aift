@@ -12,13 +12,14 @@ import {
 import { ArrowDropDown } from "@mui/icons-material";
 
 import { IController } from "../interfaces/controller";
+import { useCanvas } from "../contexts/CanvasContext";
 
 const Controller = (props: IController) => {
   const { options } = props;
+  const { selectedId, setSelectedId } = useCanvas();
 
   const anchorRef = React.useRef<HTMLDivElement>(null);
   const [open, setOpen] = React.useState<boolean>(false);
-  const [selectedId, setSelectedId] = React.useState<number>(0);
 
   const handleMenuItemClick = (id: number) => {
     setSelectedId(id);
