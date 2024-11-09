@@ -1,5 +1,5 @@
 import client, { setConfig } from "./client";
-import { ISendText } from "../interfaces/api";
+import { ISendText, ISPathumma } from "../interfaces/api";
 
 const API_URL = `${process.env.REACT_APP_API_URL}`;
 
@@ -23,6 +23,26 @@ export const api = {
     });
 
     const response = await client.get(url, { responseType: "blob" });
+    return response;
+  },
+  getPathuma: async (requests: ISPathumma) => {
+    const formData = new FormData();
+    
+    formData.append("context", requests.context);
+    formData.append("prompt", requests.prompt);
+    formData.append("sessionid", requests.sessionid);
+    formData.append("temperature", requests.temperature.toString());
+
+    setConfig({
+      headers: {
+        Apikey: `${process.env.REACT_APP_API_KEY}`,
+        "X-lib": 'ai4thai-lib',
+        accept: 'application/json'
+      },
+
+    });
+
+    const response = await client.post(`${process.env.REACT_APP_PATHUMMA_URL}`, formData);
     return response;
   },
 };

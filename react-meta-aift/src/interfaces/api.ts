@@ -4,3 +4,10 @@ export interface ISendText {
   phrase_break: number;
   audiovisual: number;
 }
+
+export interface ISPathumma {
+  context: string;
+  prompt: string;
+  sessionid: string;
+  temperature: number;
+}
